@@ -1,1 +1,20 @@
-<p>favorites works!</p>
+<div class="container mt-4">
+
+  <h2 class="mb-4 fw-bold text-danger">❤️ My Favorites</h2>
+
+  <div *ngIf="loading" class="text-center py-5">
+    <div class="spinner-border text-danger" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && favoriteRecipes.length === 0" class="text-center py-5">
+    <div style="font-size: 4rem;">❤️</div>
+    <h4 class="text-muted mt-3">No favorites yet</h4>
+    <p class="text-muted">Start adding your favorite recipes!</p>
+    <a routerLink="/" class="btn btn-outline-danger mt-2">Browse Recipes</a>
+  </div>
+
+  <app-recipe-grid *ngIf="!loading && favoriteRecipes.length > 0" [recipes]="favoriteRecipes"></app-recipe-grid>
+
+</div>

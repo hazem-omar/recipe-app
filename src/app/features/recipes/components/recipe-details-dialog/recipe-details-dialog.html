@@ -1,1 +1,47 @@
-<p>recipe-details-dialog works!</p>
+<div *ngIf="recipe" class="p-0">
+
+  <!-- IMAGE HEADER -->
+  <div class="position-relative">
+
+    <img [src]="recipe.image"
+         class="img-fluid w-100"
+         style="height: 250px; object-fit: cover;">
+
+    <div class="position-absolute bottom-0 start-0 w-100 p-3"
+         style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+
+      <h4 class="text-white m-0 fw-bold shadowed-text">
+        {{ recipe.title }}
+      </h4>
+
+    </div>
+
+  </div>
+
+  <!-- CONTENT -->
+  <div class="p-4">
+
+    <!-- META -->
+    <div class="d-flex gap-3 text-muted mb-3">
+      <span class="badge bg-light text-dark">
+        ⏱ {{ recipe.readyInMinutes }} mins
+      </span>
+      <span class="badge bg-light text-dark" *ngIf="recipe.servings">
+        👥 {{ recipe.servings }} servings
+      </span>
+    </div>
+
+    <hr>
+
+    <!-- SUMMARY -->
+    <div [innerHTML]="recipe.summary" class="small text-secondary mb-4"></div>
+
+    <!-- BUTTON -->
+    <button class="btn btn-success btn-lg w-100 mt-2 shadow"
+            (click)="addToShoppingList()">
+      🛒 Add Ingredients to Shopping List
+    </button>
+
+  </div>
+
+</div>
