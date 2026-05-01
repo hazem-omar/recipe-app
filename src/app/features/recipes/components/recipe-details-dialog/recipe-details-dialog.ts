@@ -3,12 +3,21 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { Recipe } from '../../services/recipe';
 import { ShoppingList } from '../../../shopping/services/shopping-list';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-recipe-details-dialog',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './recipe-details-dialog.html',
+  animations: [
+  trigger('zoomIn', [
+    transition(':enter', [
+      style({ transform: 'scale(0.8)', opacity: 0 }),
+      animate('250ms ease-out', style({ transform: 'scale(1)', opacity: 1 }))
+    ])
+  ])
+]
 })
 export class RecipeDetailsDialog implements OnInit {
 

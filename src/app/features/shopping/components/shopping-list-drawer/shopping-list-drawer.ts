@@ -1,12 +1,21 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShoppingList } from '../../services/shopping-list';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-shopping-list-drawer',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './shopping-list-drawer.html'
+  templateUrl: './shopping-list-drawer.html',
+  animations: [
+  trigger('slideIn', [
+    transition(':enter', [
+      style({ transform: 'translateX(100%)' }),
+      animate('300ms ease-out', style({ transform: 'translateX(0)' }))
+    ])
+  ])
+]
 })
 export class ShoppingListDrawer {
 
