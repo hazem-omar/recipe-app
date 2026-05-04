@@ -5,24 +5,30 @@
 
   <div *ngIf="(shoppingList.shoppingList$ | async) as items; else empty">
 
-    <div *ngFor="let item of items"
+    <div *ngFor="let item of items; let i = index"
          class="mb-3 p-3 bg-white rounded-3 shadow-sm">
 
       <div class="fw-bold text-primary mb-2">
         {{ item.recipeTitle }}
       </div>
 
+      <button class="btn btn-sm btn-outline-danger"
+          (click)="shoppingList.removeRecipe(item.recipeTitle)">
+        Remove
+     </button>
+
       <div class="small">
 
         <div class="d-flex justify-content-between border-bottom py-2"
              *ngFor="let ing of item.ingredients">
 
-          <span class="text-truncate" style="max-width: 70%;">{{ ing.name }}</span>
-
-          <span class="text-success fw-bold">
-            {{ ing.amount }} {{ ing.unit }}
+          <<span class="text-truncate" style="max-width: 60%;">
+           {{ ing.name }}
           </span>
 
+          <span class="text-success fw-bold">
+            {{ ing.amount | unitConverter: ing.unit }}
+          </span>
         </div>
 
       </div>
@@ -36,8 +42,10 @@
 
   <ng-template #empty>
     <div class="text-center text-muted mt-5 py-5">
-       <div class="mb-3" style="font-size: 3rem;"></div>
-       <p>No items yet</p>
+        <div class="mb-3" style="font-size: 3rem;">
+         🛒
+        </div>
+      <p>No items yet</p>
        <small>Add ingredients from a recipe to get started!</small>
     </div>
   </ng-template>

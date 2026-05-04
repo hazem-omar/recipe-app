@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShoppingList } from '../../services/shopping-list';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { UnitConverterPipe } from '../../../../shared/pipes/unit-converter-pipe';
+
 
 @Component({
   selector: 'app-shopping-list-drawer',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, UnitConverterPipe],
   templateUrl: './shopping-list-drawer.html',
   animations: [
   trigger('slideIn', [

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 export class Recipe {
 
   private baseUrl = 'https://api.spoonacular.com/recipes';
-  private apiKey = '5c1feee1435e40e39b4a9ebbae038aae';
+  private apiKey = environment.spoonacularApiKey;
 
   constructor(private http: HttpClient) {}
 
